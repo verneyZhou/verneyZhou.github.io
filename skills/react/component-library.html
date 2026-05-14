@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Turborepo + pnpm 搭建 React 组件库 | Zyro</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/icons/favicon.ico">
+    <link rel="manifest" href="/js/mainfest.json">
+    <link rel="stylesheet" href="/styles/css/style.css">
+    <script type="utf-8" src="/js/disable-user-zoom.js"></script>
+    <meta name="description" content="这是Zyro的前端技术博客~">
+    <meta name="Author" content="Zyro">
+    <meta rel="keywords" content="verneyzhou,阿沐,一苇,四零肆,Zyro,前端,docs.verneyzhou-code.cn,博客,fe,IT,技术">
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <meta name="viewport" content="width=device-width,width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.30a490da.css" as="style"><link rel="preload" href="/assets/js/app.f2c56d1b.js" as="script"><link rel="preload" href="/assets/js/3.2bdc524f.js" as="script"><link rel="preload" href="/assets/js/153.582fe762.js" as="script"><link rel="preload" href="/assets/js/4.3068ff69.js" as="script">
+    <link rel="stylesheet" href="/assets/css/0.styles.30a490da.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container have-rightmenu"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/icons/apple-touch-icon.png" alt="Zyro" class="logo"> <span class="site-name can-hide">Zyro</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/archives/" class="nav-link">时间轴</a></div><div class="nav-item"><a href="/more/ai/" class="nav-link">AI</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="基础" class="dropdown-title"><!----> <span class="title" style="display:;">基础</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/js/" class="nav-link">JS</a></li><li class="dropdown-item"><!----> <a href="/frontend/html/" class="nav-link">HTML</a></li><li class="dropdown-item"><!----> <a href="/frontend/css/" class="nav-link">CSS</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="进阶" class="dropdown-title"><!----> <span class="title" style="display:;">进阶</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/skills/vue/" class="nav-link">Vue</a></li><li class="dropdown-item"><!----> <a href="/skills/react/" class="nav-link router-link-active">React</a></li><li class="dropdown-item"><!----> <a href="/skills/webpack/" class="nav-link">Webpack</a></li><li class="dropdown-item"><!----> <a href="/code/" class="nav-link">源码</a></li><li class="dropdown-item"><!----> <a href="/more/web3/" class="nav-link">Web3</a></li><li class="dropdown-item"><!----> <a href="/more/" class="nav-link">更多</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="项目" class="dropdown-title"><!----> <span class="title" style="display:;">项目</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>PC端</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/project/vue-node-admin/" class="nav-link">vue-node-admin</a></li><li class="dropdown-subitem"><a href="/skills/vue/vue3-vite-admin.html" class="nav-link">vue3-vite-admin</a></li><li class="dropdown-subitem"><a href="/skills/vue/vue3-cli-admin.html" class="nav-link">vue3-cli-admin</a></li><li class="dropdown-subitem"><a href="/skills/vue/vue3-webpack5-admin.html" class="nav-link">vue3-webpack5-admin</a></li><li class="dropdown-subitem"><a href="/project/mono-react-project.html" class="nav-link">teach-react-mono</a></li><li class="dropdown-subitem"><a href="/project/yiwei-fullstack-web/" class="nav-link">yiwei-fullstack-web</a></li></ul></li><li class="dropdown-item"><h4>移动端</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/project/mobile-h5/" class="nav-link">微信h5</a></li><li class="dropdown-subitem"><a href="/project/mini-program/" class="nav-link">微信小程序</a></li><li class="dropdown-subitem"><a href="/project/mobile/" class="nav-link">移动端开发笔记</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/tool/" class="nav-link">其他</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar-hover-trigger"></div> <aside class="sidebar" style="display:none;"><div class="blogger"><img src="images/poster202602.png"> <div class="blogger-info"><h3></h3> <span>轻舟已过万重山。</span></div></div> <nav class="nav-links"><div class="nav-item"><a href="/archives/" class="nav-link">时间轴</a></div><div class="nav-item"><a href="/more/ai/" class="nav-link">AI</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="基础" class="dropdown-title"><!----> <span class="title" style="display:;">基础</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/js/" class="nav-link">JS</a></li><li class="dropdown-item"><!----> <a href="/frontend/html/" class="nav-link">HTML</a></li><li class="dropdown-item"><!----> <a href="/frontend/css/" class="nav-link">CSS</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="进阶" class="dropdown-title"><!----> <span class="title" style="display:;">进阶</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/skills/vue/" class="nav-link">Vue</a></li><li class="dropdown-item"><!----> <a href="/skills/react/" class="nav-link router-link-active">React</a></li><li class="dropdown-item"><!----> <a href="/skills/webpack/" class="nav-link">Webpack</a></li><li class="dropdown-item"><!----> <a href="/code/" class="nav-link">源码</a></li><li class="dropdown-item"><!----> <a href="/more/web3/" class="nav-link">Web3</a></li><li class="dropdown-item"><!----> <a href="/more/" class="nav-link">更多</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="项目" class="dropdown-title"><!----> <span class="title" style="display:;">项目</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>PC端</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/project/vue-node-admin/" class="nav-link">vue-node-admin</a></li><li class="dropdown-subitem"><a href="/skills/vue/vue3-vite-admin.html" class="nav-link">vue3-vite-admin</a></li><li class="dropdown-subitem"><a href="/skills/vue/vue3-cli-admin.html" class="nav-link">vue3-cli-admin</a></li><li class="dropdown-subitem"><a href="/skills/vue/vue3-webpack5-admin.html" class="nav-link">vue3-webpack5-admin</a></li><li class="dropdown-subitem"><a href="/project/mono-react-project.html" class="nav-link">teach-react-mono</a></li><li class="dropdown-subitem"><a href="/project/yiwei-fullstack-web/" class="nav-link">yiwei-fullstack-web</a></li></ul></li><li class="dropdown-item"><h4>移动端</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/project/mobile-h5/" class="nav-link">微信h5</a></li><li class="dropdown-subitem"><a href="/project/mini-program/" class="nav-link">微信小程序</a></li><li class="dropdown-subitem"><a href="/project/mobile/" class="nav-link">移动端开发笔记</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/tool/" class="nav-link">其他</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Turborepo + pnpm 搭建 React 组件库</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/skills/react/component-library.html#turborepo" class="sidebar-link">Turborepo</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/skills/react/component-library.html#turborepo优势" class="sidebar-link">Turborepo优势</a></li><li class="sidebar-sub-header"><a href="/skills/react/component-library.html#pipelines" class="sidebar-link">Pipelines</a></li><li class="sidebar-sub-header"><a href="/skills/react/component-library.html#dependson" class="sidebar-link">DependsOn</a></li><li class="sidebar-sub-header"><a href="/skills/react/component-library.html#filtering-packages" class="sidebar-link">Filtering Packages</a></li><li class="sidebar-sub-header"><a href="/skills/react/component-library.html#turborepo-vs-pnpm" class="sidebar-link">Turborepo vs Pnpm</a></li><li class="sidebar-sub-header"><a href="/skills/react/component-library.html#turbo-vs-lerna" class="sidebar-link">Turbo vs Lerna</a></li><li class="sidebar-sub-header"><a href="/skills/react/component-library.html#常用命令" class="sidebar-link">常用命令</a></li></ul></li><li><a href="/skills/react/component-library.html#项目搭建" class="sidebar-link">项目搭建</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/skills/react/component-library.html#初始化" class="sidebar-link">初始化</a></li><li class="sidebar-sub-header"><a href="/skills/react/component-library.html#pnpm-workspace-yaml" class="sidebar-link">pnpm-workspace.yaml</a></li><li class="sidebar-sub-header"><a href="/skills/react/component-library.html#turbo-json" class="sidebar-link">turbo.json</a></li><li class="sidebar-sub-header"><a href="/skills/react/component-library.html#eslint-config库" class="sidebar-link">eslint-config库</a></li><li class="sidebar-sub-header"><a href="/skills/react/component-library.html#utils库" class="sidebar-link">utils库</a></li><li class="sidebar-sub-header"><a href="/skills/react/component-library.html#hooks库" class="sidebar-link">hooks库</a></li><li class="sidebar-sub-header"><a href="/skills/react/component-library.html#ui组件库" class="sidebar-link">ui组件库</a></li><li class="sidebar-sub-header"><a href="/skills/react/component-library.html#docs项目" class="sidebar-link">docs项目</a></li><li class="sidebar-sub-header"><a href="/skills/react/component-library.html#storybook项目" class="sidebar-link">storybook项目</a></li><li class="sidebar-sub-header"><a href="/skills/react/component-library.html#playground项目" class="sidebar-link">playground项目</a></li></ul></li><li><a href="/skills/react/component-library.html#项目结构" class="sidebar-link">项目结构</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/skills/react/component-library.html#开发流程" class="sidebar-link">开发流程</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/skills/react/component-library.html#构建与发布" class="sidebar-link">构建与发布</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/skills/react/component-library.html#vercel部署" class="sidebar-link">vercel部署</a></li><li class="sidebar-sub-header"><a href="/skills/react/component-library.html#组件库发布" class="sidebar-link">组件库发布</a></li><li class="sidebar-sub-header"><a href="/skills/react/component-library.html#changesets版本管理" class="sidebar-link">Changesets版本管理</a></li></ul></li><li><a href="/skills/react/component-library.html#todo" class="sidebar-link">TODO</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/skills/react/component-library.html#备注" class="sidebar-link">备注</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/skills/react/component-library.html#打包工具对比" class="sidebar-link">打包工具对比</a></li><li class="sidebar-sub-header"><a href="/skills/react/component-library.html#ui组件库怎么实现在项目中的按需加载" class="sidebar-link">ui组件库怎么实现在项目中的按需加载？</a></li><li class="sidebar-sub-header"><a href="/skills/react/component-library.html#docs和storybook样式隔离-及其原理" class="sidebar-link">Docs和Storybook样式隔离？及其原理？</a></li></ul></li><li><a href="/skills/react/component-library.html#问题记录" class="sidebar-link">问题记录</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/skills/react/component-library.html#依赖引用问题" class="sidebar-link">依赖引用问题</a></li><li class="sidebar-sub-header"><a href="/skills/react/component-library.html#样式问题" class="sidebar-link">样式问题</a></li></ul></li><li><a href="/skills/react/component-library.html#收藏" class="sidebar-link">收藏</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/skills/react/component-library.html#参考" class="sidebar-link">参考</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <div><main class="page"><div class="theme-vdoing-wrapper "><div class="articleInfo-wrap" data-v-0c557b5e><div class="articleInfo" data-v-0c557b5e><ul class="breadcrumbs" data-v-0c557b5e><li data-v-0c557b5e><a href="/" title="首页" class="iconfont icon-home router-link-active" data-v-0c557b5e></a></li> <li data-v-0c557b5e><a href="/categories/?category=skills" title="分类" data-v-0c557b5e>skills</a></li><li data-v-0c557b5e><a href="/categories/?category=react" title="分类" data-v-0c557b5e>react</a></li></ul> <div class="info" data-v-0c557b5e><div title="作者" class="author iconfont icon-touxiang" data-v-0c557b5e><a href="javascript:;" data-v-0c557b5e>阿沐</a></div> <div title="创建时间" class="date iconfont icon-riqi" data-v-0c557b5e><a href="javascript:;" data-v-0c557b5e>2025-01-22</a></div> <!----></div></div></div> <!----> <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABH1JREFUSA3tVl1oHFUUPmdmd2ltklqbpJDiNnXFmgbFktho7YMPNiJSSZM0+CAYSkUELVhM6YuwIPpgoOKDqOBDC0XE2CQoNtQXBUFTTcCi+Wlh1V2TQExsUzcltd3M9Tt3ZjZzZ2fT+OJTL8yeM+eee757fmeJbq//KQL8X3DUSFOcfr7cRsRtxNQMWueeVzOkaITIGqQHNg5y8+jNW9ldM7A6nTpAjuolUikAwq7CE3WcM2RRDz+XGVgN3FptU/aUSlvq9Pa3iZ1+sgAqJyyAFqkipd9dqiwHF3P65YycLWc/6sqGrvoEoIp6DOFaX5h6+dnfjkWprwqsPk0dUGq5vySwDImC10KxFHgGL1SWoc92O3eVht09qdXNH11I2SsTsJYqMWzihqGMi+A+Garf3BAuuLI5oGlULyNfyB/HYNujwktOfRrMr5t77NmevqaUopx0grnKAyvVpmwUDB4x6FPXuGvYLTDwWsejwgtgkYKPqRJg8SV6xaiZ3ZTppGneS4yfH5/66fZSDHv+QZci/+h5c5UHtpy67JUqGppM0sh0Nc1dW6/N1W5Yoqat8/TU/VnadmdeW2PLLSyh0cvxBs3KbqTmwYPpxN4do/mzE8nEpvX/UMu2Wbp74zUAK5q6WkHns7V0eWkdPbPzd3rxkTGybadYySumVzhcaJFbs5UrEkQ/+CK8gF5dnh/6ciIZ73gwQ927L1IitoxKLXYP3SjYdOrHHfTZhRRlFyrorafPk20B3HPD1y2G3qKZME5Jcf3t/HUC13/8tSd++vqFveMUTwAUxSUFI1QekR1+bIze3D9MF2aq6cPvG72CgnldWCFqyRw3lwH8ZMerjTD9ElRO7Gv44wNpC90aASqGfVlz/Rx17srQ57/UU26hkhQqUB7dBR71WmzQhHUnblGmVOEw0jhbV1n9OlXUDCIRGaNV5Jp43N516fN7JmnTHdfp7Hgy0luO4aMhtkLL8Bi3bUWYvzh5Mn1dTxrL6QmGuRhGL/TiTTxRoEdTszSaq9GR0NGA3KdkOz3hqSV3MIDhQ5IVX/Ivx3umBti2es2h4eZby7x8br1rkf7Mo90AqC8aQ3sJeNzqFRu+vSANAQe3PL7l0HGOAdwDCeZYvNKeoZp1Qfs6Aipndh86HmFRi0LAnEO47wsqM6cdfjh3jBPUzhZy7nvlUfFsamED1VQt6aISHVymXZ/B2aCtIG8AI8xfobj2d3en1wWVhOeHELKmLQ1s211s88comkv4UCwWyF787mJdYXtNfhKAXVqnKTq8QZvGAGGOfaTo5pGZ/PwbUCr5+DPr/1J92JNHr9aOl/F3iI5+O1nfybsGxoimvZ3ViWSluDITw3P37mypheDIPY0tw7+O/5ApbkYw+zpfaUVu32Pi98+defdUhEpZkRFq0aqyNh9FuL9hpYbEm6iwi0z2REd09ZmyENEbuhjDWzKvZXTqKYaBIr3tt5kuPtQBZFvEUwHt60vfCNu41XsksH9Ij1BMMz1Y0OOunHNShFIP5868g5zeXmuLwL9T4b6Q2+KejgAAAABJRU5ErkJggg==">Turborepo + pnpm 搭建 React 组件库<!----></h1> <!----> <div class="theme-vdoing-content content__default"><h1 id="turborepo-pnpm-搭建-react-组件库"><a href="#turborepo-pnpm-搭建-react-组件库" class="header-anchor">#</a> Turborepo + pnpm 搭建 React 组件库</h1> <p>单纯使用 pnpm 就能实现 Monorepo 项目我们都知道，因为它原生支持 workspace，但是它也依然存在一些缺点:</p> <ol><li><code>任务运行策略</code>：虽然 pnpm 支持工作空间间的依赖管理和一些任务的并行执行，但是它并不那么灵活或高效地处理跨包的构建、测试和发布任务比如增量构建和任务缓存。</li> <li><code>自定义构建和发布流程</code>：pnpm 在自定义构建流程、测试流程和发布流程方面的能力有限。对于需要高度定制化工作流的复杂 Monorepo 项目，可能需要额外的脚本或配置来满足这些需求。</li> <li><code>构建效率</code>：在没有专门的构建缓存机制的情况下，pnpm 对于大型 Monorepo 项目的构建效率可能不如使用了缓存策略的工具。这可能导致在持续集成/持续部署（CI/CD）环境中，构建和部署的时间增长。</li> <li><code>高级任务调度和资源管理</code>：pnpm 本身可能不提供高级的任务调度和资源管理特性，如限制并行任务数目以避免过度占用系统资源，或者根据任务的资源使用情况动态调整优先级。</li></ol> <h2 id="turborepo"><a href="#turborepo" class="header-anchor">#</a> Turborepo</h2> <blockquote><p>Turborepo是一个高性能的构建系统，专为 JavaScript 和 TypeScript 的 Monorepo 项目设计。它提供了一种高效管理和构建项目中多个包的方式，通过缓存先前构建和测试的结果来显著减少重复工作的需要，从而加快开发和持续集成的流程。Turborepo 旨在提高大型 Monorepo 项目的构建效率，特别是在复杂的项目中，它可以处理依赖关系、执行任务、并确保构建的正确性和效率。</p></blockquote> <ul><li><a href="https://turbo.build/" target="_blank" rel="noopener noreferrer">Turbo官网<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="https://tightenpreacher.github.io/Turborepo/Quickstart/" target="_blank" rel="noopener noreferrer">Turbo中文文档<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul> <h3 id="turborepo优势"><a href="#turborepo优势" class="header-anchor">#</a> Turborepo优势</h3> <ul><li><strong>多任务并行处理</strong></li></ul> <blockquote><p>Turborepo 支持多个任务的并行运行，在执行任何任务之前，Turborepo 首先<code>分析项目中各个包之间的依赖关系</code>。这包括识别包之间的直接依赖以及跨包的间接依赖。通过这种依赖分析，Turborepo 能够构建出一个执行任务的<code>依赖图</code>，确保在执行任何特定任务之前，其所有依赖项都已经被处理。</p></blockquote> <blockquote><p>依据构建的依赖图，Turborepo 使用一种智能调度算法来决定任务的执行顺序。它会<code>并行执行那些彼此之间没有依赖关系的任务，而将有依赖关系的任务按正确的顺序排队执行</code>。这种方法<code>最大化地利用了系统的 CPU 和内存资源</code>，同时确保了构建过程的正确性。</p></blockquote> <p>在传统的 Monorepo 任务管理中虽然可以执行一些基本的并行操作，但通常缺乏一个综合策略来最大化并行效率，可能导致资源未充分利用。在没有智能管理的情况下，同时运行多个重资源任务可能会导致性能瓶颈，影响任务执行效率。</p> <ul><li><strong>增量构建</strong></li></ul> <p>增量构建意味着在构建过程中，<code>只有自上次成功构建以来发生变化的部分才会被重新构建</code>，而未更改的部分则会跳过，直接使用上次构建的结果。</p> <p>Turborepo 使用<code>文件指纹（或哈希）技术</code>来确定文件自上次构建以来是否发生了更改。通过比较文件的当前指纹与存储在缓存中的上一次构建指纹，Turborepo 能够快速识别哪些文件需要重新构建。</p> <ul><li><strong>云缓存</strong></li></ul> <blockquote><p>云缓存基于一个简单的原理：<code>将构建任务的输出（如编译代码、测试结果等）存储在云端服务</code>中。当相同的任务在未来被触发时，Turborepo 首先检查云缓存中是否存在相应的输出。如果存在，它将直接使用缓存的结果，而不是重新执行任务。这种机制依赖于对任务输入（如源代码文件）的敏感度分析，确保仅当输入未发生变化时，才复用缓存结果。</p></blockquote> <ol><li><p><code>构建速度提升</code>：通过避免重复执行未更改的任务，云缓存显著减少了构建和测试所需的时间。</p></li> <li><p><code>团队协作优化</code>：云缓存支持跨团队成员共享，意味着一个团队成员的构建结果可以被其他成员复用，进一步提高了整个团队的工作效率。
+s</p></li> <li><p><code>CI/CD 效率增强</code>：在持续集成/持续部署（CI/CD）流程中，云缓存可以跨不同构建和部署任务共享，减少了构建步骤，加快了软件交付速度。</p></li></ol> <blockquote><p>开发人员团队和/或持续集成 (CI) 系统使用远程缓存来共享构建输出。如果您的构建是可重现的，那么一台机器的输出可以安全地在另一台机器上重复使用，这可以显着加快构建速度。</p></blockquote> <ol start="4"><li><code>资源优化</code>：减少了对计算资源的需求，尤其是在资源受限的环境中，如限制了并行构建数的 CI 服务。</li></ol> <p><strong>Q：怎么启动云缓存？</strong></p> <ol><li>如果要将本地 turborepo 链接到远程缓存，请首先使用 Vercel 帐户对 Turborepo CLI 进行身份验证：<code>npx turbo login</code>;</li> <li>接下来，可以通过运行以下命令将您的 turborepo 链接到远程缓存：<code>npx turbo link</code>;</li> <li>在 turbo.json 中启用远程缓存，添加 remoteCache 配置：</li></ol> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+  <span class="token property">&quot;$schema&quot;</span><span class="token operator">:</span> <span class="token string">&quot;https://turbo.build/schema.json&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;globalDependencies&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">&quot;**/.env.*local&quot;</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;remoteCache&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;enabled&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;team&quot;</span><span class="token operator">:</span> <span class="token string">&quot;your-team-name&quot;</span>  <span class="token comment">// 你的团队名称</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;pipeline&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// ... 现有配置保持不变</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><ol start="3"><li>启用后，对当前缓存的包或应用程序进行一些更改，并使用<code>turbo run</code>, 您的缓存工件现在将存储在本地和您的远程缓存中。</li> <li><code>rm -rf ./node_modules/.cache/turbo</code>可删除本地 Turborepo 缓存</li></ol> <h3 id="pipelines"><a href="#pipelines" class="header-anchor">#</a> Pipelines</h3> <p>Turborepo 的<strong>任务管道 Pipelines</strong>是其核心特性之一，<code>允许开发者定义和执行跨多个包（packages）的自定义任务序列</code>。任务管道使得在 Monorepo 环境中的构建、测试、部署等过程更加灵活、高效。通过在 <code>turbo.json</code> 配置文件中定义任务管道，Turborepo 能够根据依赖关系自动优化任务的执行顺序，实现并行处理，以及利用缓存来加速重复任务的执行。</p> <p>在 <code>pipeline</code> 中的每一个 key 都指向我们在 <code>package.json</code> 中定义的 script 脚本执行命令,并且在 pipeline 中的每一个 key 都是可以被 turbo run 所执行 执行 pipeline 的脚本的名称。您可以使用其下方的键以及与缓存相关的一些其他选项来指定其依赖项。</p> <p>在我们执行 <code>turbo run xxx</code> 命令的时候 turbo 会根据我们定义的 Pipelines 里对命令的各种配置去对我们的每个 package 中的 <code>package.json</code> 中 对应的 script 执行脚本进行有序的执行和缓存输出的文件。</p> <h3 id="dependson"><a href="#dependson" class="header-anchor">#</a> DependsOn</h3> <p>在 Turborepo 中，<code>DependsOn</code> 是一种配置属性，它允许你<code>明确指定任务之间的依赖关系</code>。通过使用 DependsOn，你可以确保在执行某个任务之前，其所有依赖的任务都已经完成。这是构建复杂 Monorepo 项目时确保正确执行顺序的关键机制。</p> <p>DependsOn 的主要功能是定义任务执行的先决条件，这对于管理具有复杂依赖关系的大型项目尤其重要。在 Monorepo 设置中，不同的包可能需要按照特定的顺序构建，或者某些任务（如测试或部署）可能需要等待其他任务（如构建或编译）完成后才能开始。</p> <p><strong>常规依赖 vs 拓扑依赖</strong></p> <ul><li>常规依赖 ( dependsOn )：直接指定任务的依赖关系，表示当前任务在执行前需要等待<code>指定的其他任务</code>完成</li> <li>拓扑依赖 ( ^build )：使用 <code>^</code> 前缀表示工作空间的<code>拓扑依赖关系</code>，表示当前包需要等待其<code>所有依赖包的相同任务</code>完成</li></ul> <p><a href="https://turbo.build/repo/docs/reference/configuration" target="_blank" rel="noopener noreferrer">Configuring turbo.json<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token comment">// turo.json</span>
+<span class="token punctuation">{</span>
+  <span class="token comment">// &quot;tasks&quot;: { // turbo v2+ pipeline 改成 tasks</span>
+  <span class="token comment">//   &quot;build&quot;: {</span>
+  <span class="token comment">//     &quot;dependsOn&quot;: [&quot;^build&quot;]</span>
+  <span class="token comment">//   }</span>
+  <span class="token comment">// },</span>
+  <span class="token property">&quot;globalDependencies&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token comment">// 全局依赖项，影响所有任务的缓存失效。例如： **/.env.*local 表示环境变量文件变化会使所有缓存失效</span>
+    <span class="token string">&quot;**/.env.*local&quot;</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;pipeline&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;dev&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">&quot;cache&quot;</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token comment">// cache 表示是否缓存，通常我们执行 dev 命令的时候会结合 watch 模式，所以在项目启动模式下不需要开启 turbo 缓存机制</span>
+      <span class="token property">&quot;persistent&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token comment">// 表示该任务是持久运行的（如开发服务器）</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;build&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">&quot;dependsOn&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;^build&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// 使用 ^ 前缀表示工作空间的拓扑依赖关系，^build 表示依赖所有上游包的构建任务</span>
+      <span class="token property">&quot;outputs&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token string">&quot;dist/**&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;.next/**&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;storybook-static/**&quot;</span>
+      <span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// 构建输出目录，包括 dist/** 、 .next/** 和 storybook-static/**</span>
+      <span class="token property">&quot;outputMode&quot;</span><span class="token operator">:</span> <span class="token string">&quot;new-only&quot;</span><span class="token punctuation">,</span> <span class="token comment">// 输出的模式类型</span>
+      <span class="token comment">// full:显示所有输出（默认）</span>
+      <span class="token comment">// hash-only:仅显示任务的哈希值</span>
+      <span class="token comment">// new-only:显示缓存未命中的完整输出和缓存命中的计算哈希值 </span>
+      <span class="token comment">// errors-only:仅显示任务失败的输出 </span>
+      <span class="token comment">// none:隐藏所有任务输出</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;api:build&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">&quot;outputs&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;dist/**&quot;</span><span class="token punctuation">]</span> <span class="token comment">// outputs 表示输出文件，为空数组表示不缓存输出</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;ui:build&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">&quot;inputs&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;src/**&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;public/**&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// inputs 表示输入文件，当输入文件发生变化时，任务会重新执行，指定[]意味着任务在任何文件发生更改时重新运行。</span>
+      <span class="token property">&quot;dependsOn&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;api:build&quot;</span><span class="token punctuation">]</span> <span class="token comment">// 常规依赖，表示当前任务在执行前需要等待指定的其他任务完成，为空数组表示没有依赖</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+<span class="token punctuation">}</span>
+<span class="token comment">/*
+拓扑依赖 具体举例说明：
+
+假设你的项目结构是：
+- packages/ui (被 docs 依赖)
+- apps/docs (依赖 ui)
+
+当你运行 turbo build 时：
+- 使用 &quot;dependsOn&quot;: [&quot;^build&quot;] 时，docs 的构建会自动等待 ui 的构建完成
+- 这是因为 docs 在 package.json 中依赖了 ui 包，Turborepo 会自动识别这种依赖关系
+*/</span>
+</code></pre></div><blockquote><p>在这个例子中，<code>ui:build</code> 任务通过 <code>dependsOn</code> 属性声明了对 <code>api:build</code> 任务的依赖。<strong>这意味着 Turborepo 会先执行 api:build 任务，确保 API 构建完成后，才开始执行 ui:build。</strong></p></blockquote> <h3 id="filtering-packages"><a href="#filtering-packages" class="header-anchor">#</a> Filtering Packages</h3> <blockquote><p>在 Turborepo 中，<code>--filter</code> 是一个非常有用的命令行选项，允许开发者有选择性地运行特定的任务或<code>针对特定的包执行操作</code>。这个功能特别适合在大型 Monorepo 项目中使用，因为它可以帮助你缩小命令的作用范围，仅对那些你确实想要操作的包或任务进行构建、测试或其他任何支持的命令。</p></blockquote> <p>在一个包含多个包（packages）的 Monorepo 中，如果你只想要构建或测试某些包，可以使用 <code>--filter</code> 来指定这些包：</p> <div class="language-sh extra-class"><pre class="language-sh"><code>turbo run <span class="token operator">&lt;</span>command<span class="token operator">&gt;</span> --filter<span class="token operator">=</span><span class="token operator">&lt;</span>package name<span class="token operator">&gt;</span>
+
+<span class="token function">pnpm</span> run dev --filter docs <span class="token comment"># turbo run dev会同时在所有工作区运行dev。但有时，我们可能只想选择一个工作区</span>
+</code></pre></div><p><a href="https://turbo.build/repo/docs/crafting-your-repository/running-tasks#using-filters" target="_blank" rel="noopener noreferrer">using-filters<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h3 id="turborepo-vs-pnpm"><a href="#turborepo-vs-pnpm" class="header-anchor">#</a> Turborepo vs Pnpm</h3> <table><thead><tr><th>对比维度</th> <th>Turborepo</th> <th>PNPM</th></tr></thead> <tbody><tr><td><strong>核心优势</strong></td> <td>- 增量构建和智能缓存<br>- 基于依赖图的任务调度<br>- CI/CD 友好，支持远程缓存</td> <td>- 高效的依赖管理(硬链接复用)<br>- 原生支持 monorepo<br>- 快速安装且节省空间</td></tr> <tr><td><strong>主要劣势</strong></td> <td>- 不能独立管理依赖<br>- 需要配合包管理器使用</td> <td>- 缺乏构建优化能力<br>- 任务调度较为基础</td></tr> <tr><td><strong>适用场景</strong></td> <td>大型项目的构建优化</td> <td>包管理和工作空间管理</td></tr> <tr><td><strong>最佳实践</strong></td> <td>大型项目推荐与 PNPM 配合使用</td> <td>小型项目可单独使用</td></tr></tbody></table> <h3 id="turbo-vs-lerna"><a href="#turbo-vs-lerna" class="header-anchor">#</a> Turbo vs Lerna</h3> <table><thead><tr><th>特性</th> <th>Turborepo</th> <th>Lerna</th></tr></thead> <tbody><tr><td><strong>构建性能</strong></td> <td>- 支持增量构建<br>- 智能缓存机制<br>- 支持远程缓存<br>- 并行任务执行<br>- 构建速度快</td> <td>- <strong>基本并行任务执行</strong><br>- 无内置缓存机制<br>- 构建速度相对较慢</td></tr> <tr><td><strong>依赖管理</strong></td> <td>- 不直接处理依赖<br>- 需配合包管理器使用<br>- 专注于构建优化</td> <td>- 完整的依赖管理<br>- 版本关联处理<br>- 支持独立/统一版本</td></tr> <tr><td><strong>配置复杂度</strong></td> <td>- 配置简单<br>- 主要通过 turbo.json<br>- 学习曲线平缓</td> <td>- 配置相对复杂<br>- 概念较多<br>- 学习曲线陡峭</td></tr> <tr><td><strong>功能特性</strong></td> <td>- 专注构建优化<br>- 任务编排能力<br>- Pipeline 配置<br>- 现代化体验</td> <td>- 完整项目管理<br>- 发布版本管理<br>- 成熟生态系统<br>- 丰富社区插件</td></tr> <tr><td><strong>适用场景</strong></td> <td>- 大型快速构建项目<br>- 现代前端工具链<br>- 配合 pnpm 使用</td> <td>- 需要完整包管理<br>- 传统 npm 包开发<br>- 精细版本控制</td></tr> <tr><td><strong>缓存机制</strong></td> <td>- 本地缓存<br>- 远程缓存<br>- 智能缓存失效</td> <td>- 无内置缓存<br>- 依赖外部工具</td></tr> <tr><td><strong>工具集成</strong></td> <td>- 与现代工具链集成好<br>- 支持主流 CI/CD</td> <td>- 生态系统成熟<br>- 插件系统丰富</td></tr></tbody></table> <p>Lerna 中的<code>基本并行任务执行</code>指的是它提供的一个简单的并行执行任务的能力。</p> <p>例如：<code>lerna run build --parallel</code>，lerna通过 <code>--parallel</code> 参数实现并行执行。它同时启动所有包的相同命令，不考虑包之间的依赖关系，不支持智能任务调度；</p> <p>举个例子：假设有三个包：A 依赖 B，B 依赖 C，那么：</p> <ul><li>Lerna 的 <code>--parallel</code> 会同时执行 A、B、C 的构建</li> <li>Turborepo 会先构建 C，然后是 B，最后是 A，同时利用缓存避免重复构建</li></ul> <p><code>Turbo</code>它能够有效地安排任务类似于瀑布可以同时异步执行多个任务，而<code>lerna</code>一次只能执行一项任务</p> <p><strong>选择建议:</strong></p> <ol><li>选择 Turborepo 的情况：项目需要优化构建性能，喜欢简单的配置，使用现代前端工具链，使用 pnpm 作为包管理器，结合 changeset 进行版本控制</li> <li>选择 Lerna 的情况：需要完整的包管理功能，需要精细的版本控制，依赖成熟的社区支持，项目较为传统</li></ol> <h3 id="常用命令"><a href="#常用命令" class="header-anchor">#</a> 常用命令</h3> <div class="language-sh extra-class"><pre class="language-sh"><code>turbo run build --continue <span class="token comment"># 默认为false,该标志告诉turbo是否在出现错误（即任务的非零退出代码）时继续执行。默认情况下，指定--parallel标志将自动设置--continue为true除非明确设置为false。</span>
+
+turbo run lint --parallel --no-cache <span class="token comment"># --no-cache 默认false, 禁用缓存，每次运行都会重新构建。</span>
+turbo run dev --parallel --no-cache
+<span class="token comment"># --parallel 默认false, 脚本程序并行运行命令并忽略依赖关系图。这对于使用实时重新加载进行开发很有用。</span>
+<span class="token comment"># 例如我们启动vite项目的时候我们就需要忽略其他可能出现的dependsOn依赖关系</span>
+
+turbo run build --filter<span class="token operator">=</span>my-pkg <span class="token comment"># 运行my-pkg包</span>
+turbo run <span class="token builtin class-name">test</span> --filter<span class="token operator">=</span><span class="token punctuation">..</span>.^@scope/my-lib <span class="token comment"># 运行所有以^@scope/my-lib开头的包</span>
+turbo run build --filter<span class="token operator">=</span>./apps/* --filter<span class="token operator">=</span><span class="token operator">!</span>./apps/admin <span class="token comment"># 运行所有./apps/*包，但排除./apps/admin包</span>
+
+turbo run build --force <span class="token comment"># 强制构建所有包</span>
+
+<span class="token function">pnpm</span> <span class="token function">install</span> --filter @verney/ui <span class="token comment"># 安装ui库下面的依赖</span>
+<span class="token function">pnpm</span> <span class="token function">install</span> -w <span class="token comment"># 安装根目录下的依赖, -w 全称为 --workspace-root</span>
+<span class="token function">pnpm</span> -r run lint <span class="token comment"># -r 表示递归执行，会在所有包含 lint 脚本的子项目中执行该命令</span>
+<span class="token function">pnpm</span> --filter @verney/docs remove package-name <span class="token comment"># 卸载包</span>
+</code></pre></div><p><a href="https://turbo.build/repo/docs/reference" target="_blank" rel="noopener noreferrer">Turborepo API reference<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h2 id="项目搭建"><a href="#项目搭建" class="header-anchor">#</a> 项目搭建</h2> <blockquote><p>本项目是一个基于 Turborepo 和 pnpm 构建的 React 组件库开发框架，采用 monorepo 的方式管理代码。</p></blockquote> <ul><li><a href="https://github.com/verneyZhou/verney-react-design" target="_blank" rel="noopener noreferrer">源码地址<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="https://verney-react-design.vercel.app/" target="_blank" rel="noopener noreferrer">组件docs文档<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="https://verney-react-design-storybook.vercel.app" target="_blank" rel="noopener noreferrer">组件storybook文档<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul> <h3 id="初始化"><a href="#初始化" class="header-anchor">#</a> 初始化</h3> <blockquote><p><code>node v20+</code></p></blockquote> <p><a href="https://turbo.build/repo/docs/getting-started" target="_blank" rel="noopener noreferrer">Turbo Getting started<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <ul><li><p>安装turbo: <code>pnpm install turbo --global</code></p></li> <li><p>新建项目：<code>pnpm dlx create-turbo@latest</code>, 按提示操作即可~</p></li></ul> <blockquote><p>这里如果按上面命令创建，会自动生成一个默认的项目模板，也可以按如下命令选择其他模板：</p></blockquote> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token comment"># Use an example listed below</span>
+<span class="token function">pnpm</span> dlx create-turbo@latest --example <span class="token punctuation">[</span>example-name<span class="token punctuation">]</span>
+ 
+<span class="token comment"># Use a GitHub repository from the community</span>
+<span class="token function">pnpm</span> dlx create-turbo@latest --example <span class="token punctuation">[</span>github-url<span class="token punctuation">]</span>
+</code></pre></div><p><a href="https://turbo.build/repo/docs/getting-started/examples" target="_blank" rel="noopener noreferrer">getting-started/examples<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>这里如果按照默认模板创建后会生成如下目录结构：</p> <div class="language-yml extra-class"><pre class="language-yml"><code>.turbo <span class="token comment"># turbo缓存等配置信息</span>
+<span class="token key atrule">apps</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> docs/ <span class="token comment"># next创建的文档项目</span>
+    <span class="token punctuation">-</span> web/ <span class="token comment"># next创建的预览项目</span>
+<span class="token key atrule">packages</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> ui/ <span class="token comment"># ui库</span>
+    <span class="token punctuation">-</span> eslint<span class="token punctuation">-</span>config/ <span class="token comment"># eslint配置</span>
+    <span class="token punctuation">-</span> typescript<span class="token punctuation">-</span>config/ <span class="token comment"># ts配置</span>
+turbo.json <span class="token comment"># turbo配置文件</span>
+</code></pre></div><p>这里需要将项目结构改成适合自己需求的配置，对于不同的子项目可供选择的技术方案有很多，具体需要具体场景具体分析，因项目而异，对于我的这个组件库项目而言，我的整体目录结构大致如下：</p> <div class="language-yml extra-class"><pre class="language-yml"><code><span class="token key atrule">apps</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> docs/<span class="token important">**</span> <span class="token comment"># 组件文档</span>
+    <span class="token punctuation">-</span> storybook/<span class="token important">**</span> <span class="token comment"># storybook组件文档</span>
+    <span class="token punctuation">-</span> playground/<span class="token important">**</span> <span class="token comment"># 组件预览项目</span>
+<span class="token key atrule">packages</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token string">'ui/**'</span> <span class="token comment"># 里面会放组件库，工具库等子项目</span>
+    <span class="token punctuation">-</span> <span class="token string">'hooks/**'</span> <span class="token comment"># 里面会放hooks库</span>
+    <span class="token punctuation">-</span> <span class="token string">'utils/**'</span> <span class="token comment"># 里面会放utils库</span>
+    <span class="token punctuation">-</span> <span class="token string">'eslint-config/**'</span> <span class="token comment"># eslint配置</span>
+</code></pre></div><blockquote><p>具体详细修改这里不再赘述，具体细节看源码~</p></blockquote> <h3 id="pnpm-workspace-yaml"><a href="#pnpm-workspace-yaml" class="header-anchor">#</a> pnpm-workspace.yaml</h3> <blockquote><p><a href="https://pnpm.io/zh/pnpm-workspace_yaml" target="_blank" rel="noopener noreferrer">pnpm-workspace.yaml<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 是包关联配置文件~</p></blockquote> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">packages</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token string">'apps/*'</span>
+  <span class="token punctuation">-</span> <span class="token string">'packages/*'</span>
+</code></pre></div><blockquote><p>这样就能将我们项目apps下的子项目和packages下的子项目关联起来了~</p></blockquote> <h3 id="turbo-json"><a href="#turbo-json" class="header-anchor">#</a> turbo.json</h3> <blockquote><p>turbo.json是turbo的配置文件，用来配置turbo的运行环境，以及一些运行时的配置，上面有介绍，这里不再赘述~</p></blockquote> <div class="language-json extra-class"><pre class="language-json"><code><span class="token comment">// package.json</span>
+<span class="token property">&quot;build&quot;</span><span class="token operator">:</span> <span class="token string">&quot;turbo run build&quot;</span><span class="token punctuation">,</span>
+<span class="token property">&quot;dev&quot;</span><span class="token operator">:</span> <span class="token string">&quot;turbo run dev&quot;</span><span class="token punctuation">,</span>
+<span class="token property">&quot;preinstall&quot;</span><span class="token operator">:</span> <span class="token string">&quot;npx only-allow pnpm&quot;</span> <span class="token comment">// 只允许使用pnpm安装依赖</span>
+
+<span class="token comment">// turbo.json</span>
+<span class="token property">&quot;build&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token property">&quot;dependsOn&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;^build&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token property">&quot;dev&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token property">&quot;cache&quot;</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token comment">// 表示 dev 任务不会被缓存</span>
+  <span class="token property">&quot;persistent&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token comment">// 表示这是一个持久运行的任务（如开发服务器）</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+</code></pre></div><ul><li>在 monorepo 项目根目录下执行<code>npm run dev</code> 时，Turbo 的执行流程如下：</li></ul> <ol><li>首先，Turbo 会读取根目录的 <code>package.json</code> 中的 dev 命令，该命令实际执行的是<code>turbo run dev</code></li> <li>然后，Turbo 会根据 <code>turbo.json</code> 的配置进行任务调度，在开发模式下，Turbo 会并行启动所有项目的开发服务器，但会确保依赖项先准备就绪。</li></ol> <ul><li>如果执行<code>npm run build</code>，它的执行流程如下：</li></ul> <ol><li>首先，Turbo 会根据 <code>package.json</code> 中各个项目的依赖关系构建依赖图：如果项目 A 依赖项目 B，会通过 <code>package.json</code> 中的 <code>dependencies</code> 声明，Turbo 会自动分析这些依赖关系，构建一个依赖图；</li> <li>然后，Turbo 会读取根目录的 <code>package.json</code> 中的 dev 命令，该命令实际执行的是<code>turbo run build</code>；</li> <li>然后通过 turbo.json 中 build 任务的<code>&quot;dependsOn&quot;: [&quot;^build&quot;]</code> 配置，确保每个项目在构建前，其依赖的项目都已完成构建，具体到当前下面项目：
+<ul><li>首先构建基础包：<code>@verney/utils、@verney/hooks、@verney/eslint-config</code></li> <li>然后构建依赖这些基础包的 <code>@verney/ui</code></li> <li>最后构建依赖 UI 组件的应用：<code>docs、playground</code> 和 <code>storybook</code></li></ul></li></ol> <blockquote><p>这种构建顺序确保了依赖关系的正确性，避免了构建过程中的依赖错误。</p></blockquote> <h3 id="eslint-config库"><a href="#eslint-config库" class="header-anchor">#</a> eslint-config库</h3> <ul><li><p>新建项目：<code>mkdir packages/eslint-config &amp;&amp; cd packages/eslint-config</code></p></li> <li><p><code>pnpm init</code>创建pkg文件，完善脚本信息；这个库比较简单，就是创建一个公共文件存放eslint的配置信息，方便eslint代码规范的统一处理，这里就不多赘述了~</p></li> <li><p>配置：</p></li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// package.json</span>
+<span class="token string-property property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;@verney/eslint-config&quot;</span><span class="token punctuation">,</span>
+<span class="token string-property property">&quot;main&quot;</span><span class="token operator">:</span> <span class="token string">&quot;index.js&quot;</span><span class="token punctuation">,</span>
+
+<span class="token comment">// typescript.js</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 指定 TypeScript 的 ESLint 解析器</span>
+    <span class="token literal-property property">parser</span><span class="token operator">:</span> <span class="token string">'@typescript-eslint/parser'</span><span class="token punctuation">,</span>
+    <span class="token comment">// 继承的 ESLint 配置</span>
+    <span class="token keyword">extends</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token comment">// ESLint 推荐规则</span>
+        <span class="token string">'eslint:recommended'</span><span class="token punctuation">,</span>
+        <span class="token comment">// TypeScript ESLint 推荐规则</span>
+        <span class="token string">'plugin:@typescript-eslint/recommended'</span><span class="token punctuation">,</span>
+        <span class="token comment">// import 插件错误检查规则</span>
+        <span class="token string">'plugin:import/errors'</span><span class="token punctuation">,</span>
+        <span class="token comment">// import 插件警告规则</span>
+        <span class="token string">'plugin:import/warnings'</span><span class="token punctuation">,</span>
+        <span class="token comment">// import 插件 TypeScript 支持</span>
+        <span class="token string">'plugin:import/typescript'</span><span class="token punctuation">,</span>
+        <span class="token comment">// prettier 覆盖 eslint 本身规则</span>
+        <span class="token comment">// 添加 prettier 插件、设置 prettier 规则、关闭所有可能与 prettier 冲突的 ESLint 规则</span>
+        <span class="token string">'plugin:prettier/recommended'</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">plugins</span><span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token string">'@typescript-eslint'</span><span class="token punctuation">,</span> <span class="token string">'import'</span> <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token comment">// 自定义规则配置</span>
+    <span class="token literal-property property">rules</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token operator">...</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+
+<span class="token comment">// react.js</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 继承的ESLint配置</span>
+    <span class="token keyword">extends</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token comment">// 继承typescript的配置</span>
+        <span class="token string">'./typescript'</span><span class="token punctuation">,</span>
+        <span class="token comment">// 使用React推荐的规则配置</span>
+        <span class="token string">'plugin:react/recommended'</span><span class="token punctuation">,</span>
+        <span class="token comment">// 使用React Hooks推荐的规则配置</span>
+        <span class="token string">'plugin:react-hooks/recommended'</span><span class="token punctuation">,</span>
+        <span class="token comment">// 使用JSX可访问性推荐的规则配置</span>
+        <span class="token string">'plugin:jsx-a11y/recommended'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token comment">// React相关设置</span>
+    <span class="token literal-property property">settings</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">react</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token comment">// 自动检测React版本</span>
+            <span class="token literal-property property">version</span><span class="token operator">:</span> <span class="token string">'detect'</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token comment">// 具体规则配置</span>
+    <span class="token literal-property property">rules</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token operator">...</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+
+<span class="token comment">// index.js</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token keyword">extends</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'./typescript'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><ul><li>使用：</li></ul> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token comment"># 其他项目 package.json 中引入：</span>
+<span class="token string">&quot;devDependencies&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;@verney/eslint-config&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;workspace:*&quot;</span>,
+<span class="token punctuation">}</span>
+
+<span class="token comment"># 下载</span>
+<span class="token function">pnpm</span> <span class="token function">install</span> @verney/eslint-config
+
+
+<span class="token comment"># 新建 .eslintrc.js ，添加配置：</span>
+module.exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+    extends: <span class="token punctuation">[</span><span class="token string">'@verney/eslint-config/react'</span><span class="token punctuation">]</span>, <span class="token comment"># 引入 react.js 的配置</span>
+    <span class="token punctuation">..</span>.
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><ul><li><p>在 ESLint 配置中，<code>extends</code>继承现有的规则集合，包含了规则、插件和配置，可直接使用预设的规则包，这里的<code>@verney/eslint-config</code>就是一个预设的规则包，可以很方便的使用它的规则，不用再重复写规则了~</p></li> <li><p><code>extends</code>用于继承配置，<code>plugins</code>用于添加特定功能，<code>rules</code>中自定义规则~</p></li> <li><p>一般项目中会eslint和prettier一起使用，可能需要插件兼容处理，具体处理方案在之前的博客里介绍过，这里不再赘述~</p></li></ul> <div class="custom-block tip"><p class="custom-block-title">提示</p> <p>在 eslint-config 项目中，stylelint 应该放在 <code>peerDependencies</code> 中。因为 stylelint 是一个工具包，需要在使用 eslint-config 的项目中也能访问到这个命令行工具。将其放在 peerDependencies 中可以：</p> <ol><li>确保使用该配置的项目必须安装兼容版本的 stylelint</li> <li>避免多个项目使用不同版本的 stylelint 导致的冲突</li> <li>让使用者明确知道需要安装这个依赖</li></ol> <p>这是一个比较常见的最佳实践，类似于<code>eslint-config-*</code> 包通常会将 eslint 放在 peerDependencies 中。</p></div> <table><thead><tr><th>插件/解析器</th> <th>类型</th> <th>作用</th> <th>使用场景</th></tr></thead> <tbody><tr><td><code>babel-eslint</code><br>(已废弃)</td> <td>解析器</td> <td>- 支持最新的 ES 语法<br>- 支持 Flow 类型注解<br>- 支持 JSX</td> <td>已被 @babel/eslint-parser 替代</td></tr> <tr><td><code>@babel/eslint-parser</code></td> <td>解析器</td> <td>- 解析现代 JavaScript 语法<br>- 支持实验性语法<br>- 支持 Babel 配置</td> <td>使用 Babel 且需要 ESLint 支持的项目</td></tr> <tr><td><code>eslint-plugin-babel</code><br>(已废弃)</td> <td>插件</td> <td>- 提供一些特定的 Babel 语法规则</td> <td>已被 @babel/eslint-plugin 替代</td></tr> <tr><td><code>@babel/eslint-plugin</code></td> <td>插件</td> <td>- 支持 Babel 特定语法规则<br>- 提供实验性特性的规则</td> <td>配合 @babel/eslint-parser 使用</td></tr> <tr><td><code>@typescript-eslint/parser</code></td> <td>解析器</td> <td>- 解析 TypeScript 代码<br>- 生成 AST<br>- 支持类型检查</td> <td>TypeScript 项目</td></tr> <tr><td><code>@typescript-eslint/eslint-plugin</code></td> <td>插件</td> <td>- TypeScript 特定的 lint 规则<br>- 类型检查规则<br>- 最佳实践规则</td> <td>TypeScript 项目的代码质量控制</td></tr> <tr><td><code>eslint-plugin-import</code></td> <td>插件</td> <td>- 检查导入/导出语法<br>- 路径解析<br>- 导入顺序规则</td> <td>模块化 JavaScript/TypeScript 项目</td></tr> <tr><td><code>eslint-plugin-react</code></td> <td>插件</td> <td>- React 语法规则<br>- JSX 规则<br>- React 最佳实践</td> <td>React 项目</td></tr> <tr><td><code>eslint-plugin-react-hooks</code></td> <td>插件</td> <td>- Hooks 规则检查<br>- Hooks 依赖检查<br>- Hooks 使用规范</td> <td>使用 React Hooks 的项目</td></tr> <tr><td><code>eslint-plugin-vue</code></td> <td>插件</td> <td>- Vue 语法规则<br>- 模板语法检查<br>- Vue 最佳实践</td> <td>Vue 项目</td></tr></tbody></table> <h3 id="utils库"><a href="#utils库" class="header-anchor">#</a> utils库</h3> <blockquote><p>这个库主要收集一些常用的工具方法，比如：防抖、节流、深拷贝、深比较、深合并、深遍历、深校验等，这些方法可以减少重复的代码，提高代码的复用性~</p></blockquote> <ul><li>项目目录结构如下：</li></ul> <div class="language-sh extra-class"><pre class="language-sh"><code>packages/utils/
+    ├── src/                    <span class="token comment"># 源码目录</span>
+        ├── __tests__/          <span class="token comment"># 测试用例</span>
+        ├── debounce.ts
+        ├── index.ts
+    ├── .eslintrc.js            <span class="token comment"># eslint配置</span>
+    ├── tsconfig.json           <span class="token comment"># tsc配置</span>
+    ├── tsup.config.js          <span class="token comment"># tsup配置</span>
+    ├── vitest.config.ts         <span class="token comment"># vitest配置</span>
+    ├── package.json            <span class="token comment"># pkg脚本配置</span>
+</code></pre></div><ul><li><p>这个工具库使用<code>tsup</code>进行打包，关于打包工具的对比见下方备注，这里选择<code>tsup</code>主要是配置简单，打包性能好~</p></li> <li><p>使用<code>vitest</code>进行测试，具体测试配置见源码~</p></li></ul> <h3 id="hooks库"><a href="#hooks库" class="header-anchor">#</a> hooks库</h3> <blockquote><p>这个库主要收集一些常用的hooks方法，比如：<code>useDebounce、useThrottle、...</code></p></blockquote> <p>这个库跟上方utils库配置逻辑几乎一致，这里不再赘述~</p> <h3 id="ui组件库"><a href="#ui组件库" class="header-anchor">#</a> ui组件库</h3> <blockquote><p>组件库主要收集一些常用的组件，比如：<code>Button、Input、...</code></p></blockquote> <ul><li>项目目录结构如下：</li></ul> <div class="language-sh extra-class"><pre class="language-sh"><code>packages/ui/
+    ├── src/                    <span class="token comment"># 源码目录</span>
+        ├── components/          <span class="token comment"># 组件目录</span>
+            ├── Button/           <span class="token comment"># 按钮组件</span>
+                ├── __tests__/      <span class="token comment"># 测试用例</span>
+                ├── button.tsx      <span class="token comment"># 按钮组件源码</span>
+                ├── style.scss      <span class="token comment"># 按钮组件样式</span>
+                ├── index.ts      <span class="token comment"># 按钮组件入口文件</span>
+        ├── styles/              <span class="token comment"># 样式目录</span>
+        ├── test/               <span class="token comment"># 测试入口配置</span>
+        ├── index.ts             <span class="token comment"># 入口文件</span>
+    ├── .eslintrc.js            <span class="token comment"># eslint配置</span>
+    ├── tsconfig.json           <span class="token comment"># tsc配置</span>
+    ├── vite.config.ts          <span class="token comment"># vite打包配置</span>
+    ├── package.json            <span class="token comment"># pkg脚本配置</span>
+</code></pre></div><ul><li>这里考虑到可能需要对ui库的打包产物进行一些精细化的配置，所以使用<code>vite</code>进行打包~</li></ul> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token comment">// vite.config.ts</span>
+
+<span class="token comment">/// &lt;reference types=&quot;vitest&quot; /&gt;</span>
+
+<span class="token keyword">import</span> <span class="token punctuation">{</span> defineConfig <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vite'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> react <span class="token keyword">from</span> <span class="token string">'@vitejs/plugin-react'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> dts <span class="token keyword">from</span> <span class="token string">'vite-plugin-dts'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> resolve <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'path'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token comment">// React 插件支持</span>
+        <span class="token function">react</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token comment">// TypeScript 声明文件生成插件</span>
+        <span class="token function">dts</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+            include<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'src'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            exclude<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'src/**/*.test.tsx'</span><span class="token punctuation">,</span> <span class="token string">'src/**/*.stories.tsx'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            rollupTypes<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token comment">// 测试配置</span>
+    test<span class="token operator">:</span> <span class="token punctuation">{</span>
+        globals<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// 启用全局测试</span>
+        environment<span class="token operator">:</span> <span class="token string">'jsdom'</span><span class="token punctuation">,</span> <span class="token comment">// 使用 jsdom 环境</span>
+        setupFiles<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'./src/test/setup.ts'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// 测试启动文件</span>
+        include<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// 测试文件匹配模式</span>
+        coverage<span class="token operator">:</span> <span class="token punctuation">{</span>
+            reporter<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'text'</span><span class="token punctuation">,</span> <span class="token string">'json'</span><span class="token punctuation">,</span> <span class="token string">'html'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// 覆盖率报告格式</span>
+            exclude<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'node_modules/'</span><span class="token punctuation">,</span> <span class="token string">'src/test/setup.ts'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// 排除的文件</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token comment">// 构建配置</span>
+    build<span class="token operator">:</span> <span class="token punctuation">{</span>
+        target<span class="token operator">:</span> <span class="token string">'modules'</span><span class="token punctuation">,</span> <span class="token comment">// 构建目标</span>
+        outDir<span class="token operator">:</span> <span class="token string">'dist'</span><span class="token punctuation">,</span> <span class="token comment">// 输出目录</span>
+        minify<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// 启用代码压缩</span>
+        <span class="token comment">// 库模式配置</span>
+        lib<span class="token operator">:</span> <span class="token punctuation">{</span>
+            entry<span class="token operator">:</span> <span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'src/index.tsx'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment">// 入口文件</span>
+            name<span class="token operator">:</span> <span class="token string">'verneyReactDesign'</span><span class="token punctuation">,</span> <span class="token comment">// 库名称</span>
+            formats<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'es'</span><span class="token punctuation">,</span> <span class="token string">'cjs'</span><span class="token punctuation">,</span> <span class="token string">'umd'</span><span class="token punctuation">,</span> <span class="token string">'iife'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// 输出格式</span>
+            <span class="token function-variable function">fileName</span><span class="token operator">:</span> <span class="token punctuation">(</span>format<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">index.</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>format <span class="token operator">===</span> <span class="token string">'es'</span> <span class="token operator">?</span> <span class="token string">'mjs'</span> <span class="token operator">:</span> <span class="token string">'js'</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> <span class="token comment">// 文件名格式</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token comment">// Rollup 配置项</span>
+        rollupOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+            external<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'react'</span><span class="token punctuation">,</span> <span class="token string">'react-dom'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// 外部依赖</span>
+            output<span class="token operator">:</span> <span class="token punctuation">{</span>
+                globals<span class="token operator">:</span> <span class="token punctuation">{</span>
+                    react<span class="token operator">:</span> <span class="token string">'React'</span><span class="token punctuation">,</span>
+                    <span class="token string-property property">'react-dom'</span><span class="token operator">:</span> <span class="token string">'ReactDOM'</span><span class="token punctuation">,</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        sourcemap<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// 生成 sourcemap</span>
+        cssCodeSplit<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// 启用 CSS 代码分割</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><ul><li><code>package.json</code>:</li></ul> <div class="language-json extra-class"><pre class="language-json"><code>  <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;@verney/ui&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;main&quot;</span><span class="token operator">:</span> <span class="token string">&quot;dist/index.js&quot;</span><span class="token punctuation">,</span> <span class="token comment">// ui库入口</span>
+  <span class="token property">&quot;module&quot;</span><span class="token operator">:</span> <span class="token string">&quot;dist/index.mjs&quot;</span><span class="token punctuation">,</span> <span class="token comment">// 如果环境支持ESM，构建工具会优先使用我们的module入口</span>
+  <span class="token property">&quot;types&quot;</span><span class="token operator">:</span> <span class="token string">&quot;dist/index.d.ts&quot;</span><span class="token punctuation">,</span> <span class="token comment">// 声明文件入口</span>
+  <span class="token property">&quot;style&quot;</span><span class="token operator">:</span> <span class="token string">&quot;dist/index.css&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;sideEffects&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token comment">// 忽略 tree shaking 带来副作用的代码</span>
+    <span class="token string">&quot;**/*.css&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;**/*.scss&quot;</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;exports&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;.&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token comment">// 导出配置</span>
+      <span class="token property">&quot;import&quot;</span><span class="token operator">:</span> <span class="token string">&quot;./dist/index.mjs&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;require&quot;</span><span class="token operator">:</span> <span class="token string">&quot;./dist/index.js&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;types&quot;</span><span class="token operator">:</span> <span class="token string">&quot;./dist/index.d.ts&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;./dist/style.css&quot;</span><span class="token operator">:</span> <span class="token string">&quot;./dist/index.css&quot;</span> <span class="token comment">// 样式导出</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;scripts&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;build&quot;</span><span class="token operator">:</span> <span class="token string">&quot;vite build&quot;</span><span class="token punctuation">,</span> <span class="token comment">// 打包</span>
+    <span class="token property">&quot;dev&quot;</span><span class="token operator">:</span> <span class="token string">&quot;vite build --watch&quot;</span><span class="token punctuation">,</span> <span class="token comment">// 开发</span>
+  <span class="token punctuation">}</span>
+</code></pre></div><ul><li>使用：</li></ul> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token comment"># 其他项目 package.json 中引入：</span>
+<span class="token string">&quot;dependencies&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;@verney/ui&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;workspace:*&quot;</span>
+<span class="token punctuation">}</span>,
+
+<span class="token comment"># 下载</span>
+<span class="token function">pnpm</span> <span class="token function">install</span> @verney/ui
+
+
+<span class="token comment"># 新建 .eslintrc.js ，添加配置：</span>
+module.exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+    extends: <span class="token punctuation">[</span><span class="token string">'@verney/eslint-config/react'</span><span class="token punctuation">]</span>, <span class="token comment"># 引入 react.js 的配置</span>
+    <span class="token punctuation">..</span>.
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment"># App.tsx</span>
+<span class="token function">import</span> <span class="token punctuation">{</span> Button <span class="token punctuation">}</span> from <span class="token string">'@verney/ui'</span><span class="token punctuation">;</span>
+<span class="token function">import</span> <span class="token string">'@verney/ui/dist/style.css'</span><span class="token punctuation">;</span> <span class="token comment"># 引入样式</span>
+
+<span class="token operator">&lt;</span>Button<span class="token operator">&gt;</span>Hello World<span class="token operator">&lt;</span>/Button<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="docs项目"><a href="#docs项目" class="header-anchor">#</a> docs项目</h3> <blockquote><p>该项目是一个组件文档站点，使用<code>next.js</code>进行搭建，<code>nextra</code>进行主题配置~</p></blockquote> <ul><li>项目目录结构如下：</li></ul> <div class="language-sh extra-class"><pre class="language-sh"><code>apps/docs/
+    ├── components/          <span class="token comment"># 组件目录</span>
+    ├── pages/               <span class="token comment"># 页面目录</span>
+        ├── components/          <span class="token comment"># 组件文档</span>
+            ├── button.mdx      <span class="token comment"># button组件文档</span>
+        ├── _app.tsx        <span class="token comment"># 入口文件</span>
+        ├── _meta.json      <span class="token comment"># meta配置</span>
+        ├── index.mdx       <span class="token comment"># 首页配置</span>
+    ├── styles/              <span class="token comment"># 样式目录</span>
+    ├── .eslintrc.js            <span class="token comment"># eslint配置</span>
+    ├── tsconfig.json           <span class="token comment"># tsc配置</span>
+    ├── next.config.ts          <span class="token comment"># next配置</span>
+    ├── tailwind.config.ts      <span class="token comment"># tailwind配置</span>
+    ├── theme.config.tsx        <span class="token comment"># 主题配置</span>
+    ├── package.json            <span class="token comment"># pkg脚本配置</span>
+</code></pre></div><ul><li>这里使用<code>.mdx</code>文档展示组件文档，在<code>.mdx</code>文档中可以直接写<code>tsx</code>和<code>markdown</code>，比较适合编写组件文档说明~</li></ul> <div class="language-mdx extra-class"><pre class="language-text"><code>{/* button.mdx */}
+---
+title: Button 按钮
+---
+
+import { Button } from '@verney/ui';
+
+# Button 按钮
+
+按钮用于开始一个即时操作。
+
+## 基础用法
+
+### 按钮类型
+
+&lt;CodeBlock
+  language=&quot;tsx&quot;
+  code={`import { Button } from '@verney/ui';
+
+// 基础按钮类型示例
+
+&lt;Button&gt;默认按钮&lt;/Button&gt;
+&lt;Button type=&quot;primary&quot;&gt;主要按钮&lt;/Button&gt;
+&lt;Button type=&quot;dashed&quot;&gt;虚线按钮&lt;/Button&gt;
+&lt;Button type=&quot;link&quot;&gt;链接按钮&lt;/Button&gt;
+&lt;Button type=&quot;text&quot;&gt;文本按钮&lt;/Button&gt;
+`}&gt;
+  &lt;div className=&quot;flex gap-2 flex-wrap&quot;&gt;
+    &lt;Button&gt;默认按钮&lt;/Button&gt;
+    &lt;Button type=&quot;primary&quot;&gt;主要按钮&lt;/Button&gt;
+    &lt;Button type=&quot;dashed&quot;&gt;虚线按钮&lt;/Button&gt;
+    &lt;Button type=&quot;link&quot;&gt;链接按钮&lt;/Button&gt;
+    &lt;Button type=&quot;text&quot;&gt;文本按钮&lt;/Button&gt;
+  &lt;/div&gt;
+&lt;/CodeBlock&gt;
+
+## API
+
+| 属性     | 说明           | 类型                                                     | 默认值      |
+| -------- | -------------- | -------------------------------------------------------- | ----------- |
+| type     | 按钮类型       | `'default' \| 'primary' \| 'dashed' \| 'link' \| 'text'` | `'default'` |
+| size     | 按钮大小       | `'small' \| 'medium' \| 'large'`                         | `'medium'`  |
+| disabled | 是否禁用       | `boolean`                                                | `false`     |
+| loading  | 是否加载中     | `boolean`                                                | `false`     |
+| danger   | 是否为危险按钮 | `boolean`                                                | `false`     |
+| block    | 是否为块级按钮 | `boolean`                                                | `false`     |
+| onClick  | 点击事件       | `(event: React.MouseEvent&lt;HTMLButtonElement&gt;) =&gt; void`   | -           |
+</code></pre></div><h3 id="storybook项目"><a href="#storybook项目" class="header-anchor">#</a> storybook项目</h3> <blockquote><p><a href="https://storybook.js.org/docs" target="_blank" rel="noopener noreferrer">Storybook<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 是一个用于独立构建 UI 组件和页面的前端开发工具。</p></blockquote> <p>平常的组件开发，需要把组件单独放置在一个页面不断的调试，而<code>storybook</code>就单独为开发人员提供了一个页面，将组件放置在他们提供的页面中清晰可见。</p> <p><code>Storybook</code> 是一个用于单独构建 UI 组件和页面的前端工具，我们可以通过 story 独立创建组件，并且每个组件都有一个独立开发调试环境。Storybook 是运行在主应用程序之外，不依赖于项目，因此我们不必担心开发环境、依赖等问题导致不能开发组件；Storybook 支持多个主流框架（<code>React, Vue, Angular, Mithril, Ember</code>）等。</p> <blockquote><p>有些用<code>storybook</code>开发组件的项目里，喜欢把<code>storybook</code>的配置信息耦合在组件开发的项目里，这样我觉得如果是一个<code>单仓库单模块</code>应用还好，但像我这个monorepo项目的话，耦合度太高可能不太方便管理，所以我这里把关于<code>storybook</code>的配置信息单独放在一个<code>storybook</code>项目里，方便解耦~</p></blockquote> <ul><li>项目目录结构如下：</li></ul> <div class="language-sh extra-class"><pre class="language-sh"><code>apps/storybook/
+    ├── .storybook/                 <span class="token comment"># 组件目录</span>
+        ├── main.ts                 <span class="token comment"># 配置文件</span>
+        ├── preview.ts              <span class="token comment"># 预览</span>
+    ├── stories/                    <span class="token comment"># 页面目录</span>
+        ├── button.stories.tsx      <span class="token comment"># button组件文档</span>
+    ├── storybook-static/           <span class="token comment"># 打包后的静态资源</span>
+    ├── .eslintrc.js            <span class="token comment"># eslint配置</span>
+    ├── tsconfig.json           <span class="token comment"># tsc配置 </span>
+    ├── package.json            <span class="token comment"># pkg脚本配置</span>
+</code></pre></div><ul><li><code>button.stories.tsx</code>:</li></ul> <div class="language-tsx extra-class"><pre class="language-tsx"><code><span class="token comment">// 导入 Storybook 必要的类型定义</span>
+<span class="token keyword">import</span> <span class="token keyword">type</span> <span class="token punctuation">{</span> Meta<span class="token punctuation">,</span> StoryObj <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@storybook/react'</span><span class="token punctuation">;</span>
+<span class="token comment">// 导入 Button 组件</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> Button <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@verney/ui'</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 定义 Button 组件的 meta 配置</span>
+<span class="token keyword">const</span> meta <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 在 Storybook 侧边栏中的显示路径</span>
+    title<span class="token operator">:</span> <span class="token string">'Components/Button'</span><span class="token punctuation">,</span>
+    <span class="token comment">// 要展示的组件</span>
+    component<span class="token operator">:</span> Button<span class="token punctuation">,</span>
+    <span class="token comment">// 组件展示参数</span>
+    parameters<span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 居中布局</span>
+        layout<span class="token operator">:</span> <span class="token string">'centered'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token comment">// 启用自动文档生成</span>
+    tags<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'autodocs'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token comment">// 控制面板中可调整的参数</span>
+    argTypes<span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 按钮文本内容</span>
+        children<span class="token operator">:</span> <span class="token punctuation">{</span> control<span class="token operator">:</span> <span class="token string">'text'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token comment">// 按钮类型选择</span>
+        type<span class="token operator">:</span> <span class="token punctuation">{</span>
+            control<span class="token operator">:</span> <span class="token punctuation">{</span> type<span class="token operator">:</span> <span class="token string">'select'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            options<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'primary'</span><span class="token punctuation">,</span> <span class="token string">'default'</span><span class="token punctuation">,</span> <span class="token string">'dashed'</span><span class="token punctuation">,</span> <span class="token string">'text'</span><span class="token punctuation">,</span> <span class="token string">'link'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token comment">// 按钮尺寸选择</span>
+        size<span class="token operator">:</span> <span class="token punctuation">{</span>
+            control<span class="token operator">:</span> <span class="token punctuation">{</span> type<span class="token operator">:</span> <span class="token string">'select'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            options<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'large'</span><span class="token punctuation">,</span> <span class="token string">'middle'</span><span class="token punctuation">,</span> <span class="token string">'small'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token comment">// 是否禁用按钮</span>
+        disabled<span class="token operator">:</span> <span class="token punctuation">{</span> control<span class="token operator">:</span> <span class="token string">'boolean'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span> satisfies Meta<span class="token operator">&lt;</span><span class="token keyword">typeof</span> Button<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 导出 meta 配置</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> meta<span class="token punctuation">;</span>
+<span class="token comment">// 定义 Story 类型</span>
+<span class="token keyword">type</span> <span class="token class-name">Story</span> <span class="token operator">=</span> StoryObj<span class="token operator">&lt;</span><span class="token keyword">typeof</span> meta<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 导出主要按钮的 Story</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> Primary<span class="token operator">:</span> Story <span class="token operator">=</span> <span class="token punctuation">{</span>
+    args<span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 设置按钮类型为主要按钮</span>
+        type<span class="token operator">:</span> <span class="token string">'primary'</span><span class="token punctuation">,</span>
+        <span class="token comment">// 设置按钮文本</span>
+        children<span class="token operator">:</span> <span class="token string">'主要按钮'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// ... 其他 stories</span>
+
+</code></pre></div><ul><li><code>package.json</code>:</li></ul> <div class="language-json extra-class"><pre class="language-json"><code><span class="token property">&quot;dev&quot;</span><span class="token operator">:</span> <span class="token string">&quot;storybook dev -p 6006&quot;</span><span class="token punctuation">,</span> <span class="token comment">// 启动 Storybook</span>
+<span class="token property">&quot;build&quot;</span><span class="token operator">:</span> <span class="token string">&quot;storybook build&quot;</span><span class="token punctuation">,</span> <span class="token comment">// 打包 Storybook</span>
+</code></pre></div><h3 id="playground项目"><a href="#playground项目" class="header-anchor">#</a> playground项目</h3> <p>该项目是使用<code>vite + react + tailwindcss</code>搭建的一个比较简单的开发测试项目，用于展示ui组件，utils工具函数、hooks等的方法的测试~</p> <blockquote><p>项目结构比较简单常规，这里不再赘述，具体细节看源码~</p></blockquote> <ul><li><strong>工程化配置</strong></li></ul> <blockquote><p>关于项目的工程化配置，这里主要是<code>eslint</code>、<code>prettier</code>、<code>husky</code>、<code>commitlint</code>、<code>lint-staged</code>这些东西，具体配置可参考我之前另一篇开发vue组件库的博客<a href="/skills/vue/vue-design.html#eslint">vue-design</a>，配置流程大差不差，跟组件库框架没多大关系，这里不再展开了，具体配置可参考源码~</p></blockquote> <h2 id="项目结构"><a href="#项目结构" class="header-anchor">#</a> 项目结构</h2> <div class="language-yml extra-class"><pre class="language-yml"><code>├── apps/                      <span class="token comment"># 应用目录</span>
+    ├── docs/                  <span class="token comment"># 文档站点</span>
+        ├── pages/             <span class="token comment"># 文档页面</span>
+        ├── next.config.js     <span class="token comment"># Next.js 配置</span>
+        ├── theme.config.tsx   <span class="token comment"># Nextra 主题配置</span>
+        └── package.json       <span class="token comment"># pkg脚本配置</span>
+
+│   ├── storybook/             <span class="token comment"># Storybook 组件文档</span>
+        ├── .storybook/        <span class="token comment"># Storybook 配置文件</span>
+        ├── stories/           <span class="token comment"># 组件 stories</span>
+        └── package.json       <span class="token comment"># pkg脚本配置</span>
+
+│   ├── playground/             <span class="token comment"># 开发测试预览项目: vite + react</span>
+        ├── src/
+            ├── App.tsx
+        ├── index.html
+        ├── vite.config.ts       <span class="token comment"># vite配置</span>
+        └── package.json         <span class="token comment"># pkg脚本配置</span>
+
+├── packages/                  <span class="token comment"># 包目录</span>
+│   ├── eslint<span class="token punctuation">-</span>config/         <span class="token comment"># ESLint 配置</span>
+        ├── react.js           <span class="token comment"># React 配置</span>
+        ├── typescript.js      <span class="token comment"># TypeScript 配置</span>
+        ├── index.js           <span class="token comment"># TypeScript 配置</span>
+        └── package.json       <span class="token comment"># pkg脚本配置</span>
+
+│   ├── ui/                   <span class="token comment"># UI 组件库</span>
+        ├── src/              <span class="token comment"># 组件源码</span>
+        ├── components/       <span class="token comment"># 构建产物</span>
+        ├── styles/           <span class="token comment"># 组件入口</span>
+        ├── index.tsx         <span class="token comment"># 组件导出</span>
+        ├── vite.config.ts    <span class="token comment"># vite配置</span>
+        └── package.json      <span class="token comment"># pkg脚本配置</span>
+
+│   ├── utils/                <span class="token comment"># 工具函数</span>
+        ├── src/              
+        ├── tsup.config.ts    <span class="token comment"># tsup配置</span>
+        └── package.json      <span class="token comment"># pkg脚本配置</span>
+
+│   ├── hooks/                <span class="token comment"># hooks函数</span>
+        ├── src/              
+        ├── tsup.config.ts    <span class="token comment"># tsup配置</span>
+        └── package.json      <span class="token comment"># pkg脚本配置</span>
+
+├── pnpm<span class="token punctuation">-</span>workspace.yaml       <span class="token comment"># 工作空间配置</span>
+├── package.json              <span class="token comment"># pkg配置</span>
+└── turbo.json                <span class="token comment"># Turborepo 配置</span>
+</code></pre></div><h2 id="开发流程"><a href="#开发流程" class="header-anchor">#</a> 开发流程</h2> <ul><li><p>git clone项目到本地，保证node版本<code>v20+</code>，pnpm版本<code>v9.0.0+</code>;</p></li> <li><p>根目录下安装依赖：<code>pnpm install</code>；</p></li></ul> <p>方式一：</p> <ol><li>直接在项目根目录下执行：<code>npm run dev</code>即可；</li> <li>运行结束后，分别打开<code>dosc,stotybook, playground</code>等调试页面即可，之后在组件库参考其他组件进行开发；</li></ol> <p>方式二：</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token comment"># 先启动工具函数库、hooks库</span>
+<span class="token function">pnpm</span> --filter @verney/utils dev
+<span class="token function">pnpm</span> --filter @verney/hooks dev
+
+<span class="token comment"># 再启动UI组件库</span>
+<span class="token function">pnpm</span> --filter @verney/ui dev
+
+<span class="token comment"># 最后再启动文档站点、storybook、开发测试预览项目</span>
+<span class="token function">pnpm</span> --filter @verney/docs dev
+<span class="token function">pnpm</span> --filter @verney/storybook dev
+<span class="token function">pnpm</span> --filter @verney/playground dev
+</code></pre></div><blockquote><p>在 <code>packages/ui/src</code> 下创建组件；在 <code>apps/storybook/stories</code> 下添加组件 stories；在 <code>apps/docs/pages</code> 下编写组件文档~</p></blockquote> <h2 id="构建与发布"><a href="#构建与发布" class="header-anchor">#</a> 构建与发布</h2> <ul><li><p>根目录下构建：<code>pnpm build</code>；</p></li> <li><p><code>git commit</code> 提交代码；</p></li></ul> <blockquote><p>添加husky等配置之后commit之前会进行格式校验，如果格式不符合要求，会报错，需要修改代码重新提交；</p></blockquote> <h3 id="vercel部署"><a href="#vercel部署" class="header-anchor">#</a> vercel部署</h3> <blockquote><p>代码提交到github上后，可将<code>docs</code>、<code>storybook</code>项目部署到vercel进行预览，配置比较简单，这里不再赘述，具体配置可之前的博客~</p></blockquote> <ol><li><p>github上在vercel配置中添加项目；</p></li> <li><p>然后在 vercel官网 中添加项目，关联github项目，分别部署docs、storybook；</p></li> <li><p>部署成功后，以后只要main分支提交，对应项目有更改，vercel就会自动部署~</p></li></ol> <h3 id="组件库发布"><a href="#组件库发布" class="header-anchor">#</a> 组件库发布</h3> <h3 id="changesets版本管理"><a href="#changesets版本管理" class="header-anchor">#</a> Changesets版本管理</h3> <blockquote><p><a href="https://www.npmjs.com/package/@changesets/cli" target="_blank" rel="noopener noreferrer">@changesets/cli<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 是一个用于管理 monorepo 项目版本和发布的工具。它可以帮助我们追踪代码变更、自动生成 changelog、管理包的版本号，以及协调多个包之间的依赖关系。当我们需要发布新版本时，它可以帮助我们确定哪些包需要更新版本，并自动处理版本号的更新，特别适合像当前这样的 monorepo 项目结构。</p></blockquote> <ul><li><p>根目录安装：<code>pnpm add -w @changesets/cli -D</code></p></li> <li><p>根目录下创建文件：<code>.changeset/config.json</code></p></li></ul> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token comment">// 指定 changesets 配置文件的 JSON Schema</span>
+    <span class="token property">&quot;$schema&quot;</span><span class="token operator">:</span> <span class="token string">&quot;https://unpkg.com/@changesets/config@2.3.1/schema.json&quot;</span><span class="token punctuation">,</span>
+    <span class="token comment">// 配置 changelog 生成器</span>
+    <span class="token property">&quot;changelog&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token string">&quot;@changesets/cli/changelog&quot;</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+            <span class="token property">&quot;repo&quot;</span><span class="token operator">:</span> <span class="token string">&quot;verney-react-design&quot;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token comment">// 是否自动提交变更</span>
+    <span class="token property">&quot;commit&quot;</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token comment">// 固定版本的包组</span>
+    <span class="token property">&quot;fixed&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token comment">// 相互关联的包组</span>
+    <span class="token property">&quot;linked&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token comment">// 包的访问权限</span>
+    <span class="token property">&quot;access&quot;</span><span class="token operator">:</span> <span class="token string">&quot;restricted&quot;</span><span class="token punctuation">,</span>
+    <span class="token comment">// 默认的基础分支</span>
+    <span class="token property">&quot;baseBranch&quot;</span><span class="token operator">:</span> <span class="token string">&quot;main&quot;</span><span class="token punctuation">,</span>
+    <span class="token comment">// 更新内部依赖时的版本升级类型</span>
+    <span class="token property">&quot;updateInternalDependencies&quot;</span><span class="token operator">:</span> <span class="token string">&quot;patch&quot;</span><span class="token punctuation">,</span>
+    <span class="token comment">// 忽略的包列表</span>
+    <span class="token property">&quot;ignore&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token string">&quot;@verney/docs&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;@verney/playground&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;@verney/storybook&quot;</span>
+    <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre></div><ul><li>package.json中添加命令：</li></ul> <div class="language-json extra-class"><pre class="language-json"><code><span class="token property">&quot;changeset&quot;</span><span class="token operator">:</span> <span class="token string">&quot;changeset&quot;</span><span class="token punctuation">,</span> <span class="token comment">// 创建变更集</span>
+<span class="token property">&quot;version-packages&quot;</span><span class="token operator">:</span> <span class="token string">&quot;changeset version&quot;</span><span class="token punctuation">,</span> <span class="token comment">// 更新包版本</span>
+<span class="token property">&quot;release&quot;</span><span class="token operator">:</span> <span class="token string">&quot;turbo run build &amp;&amp; changeset publish&quot;</span> <span class="token comment">// 构建并发布包</span>
+</code></pre></div><ul><li>配置完成后，就可以进行操作了：</li></ul> <ol><li>在根目录下执行<code>pnpm changeset</code>，即可创建变更集：<code>选择需要发布的包、选择版本更新类型（major/minor/patch）、填写变更说明</code></li> <li>然后执行<code>pnpm version-packages</code>，Changesets 会根据变更集自动更新相应包的版本号，同时会更新 <code>CHANGELOG.md</code> 文件</li> <li>然后执行<code>pnpm release</code>，该命令会先构建所有包，然后将更新后的包发布到 npm 仓库</li></ol> <blockquote><p>发布前需要确保已经登录到 npm，可以使用<code>npm login</code> 命令进行登录</p></blockquote> <h2 id="todo"><a href="#todo" class="header-anchor">#</a> TODO</h2> <ol><li><p>eslint-config配置，<code>peerDependencies</code>使用？参考：@ecomfe/eslint-config</p></li> <li><p>组件库的按需加载配置？样式打包配置？参考：antd</p></li> <li><p>docs和storybook样式隔离？及其原理？</p></li> <li><p>组件库、工具函数对低版本的兼容？验证在不同版本的react、ts/js的项目中是否可以正常使用？</p></li> <li><p>项目使用了v1.0.1的组件，这时组件库升级到v1.0.2，增加了功能A，删除了功能B，如果项目想兼容v1.0.1，需要如何处理？</p></li></ol> <hr> <ul><li><p>完善构建配置: 支持ES Module和CommonJS两种格式</p></li> <li><p>Docs文档：添加组件库整体介绍、完善组件文档、添加贡献指南、添加更新日志、添加设计规范文档</p></li> <li><p>主题定制：实现主题定制系统、支持暗黑模式、提供主题变量配置</p></li> <li><p>性能优化：添加 Tree Shaking 支持、优化打包体积、添加性能监控指标</p></li> <li><p>辅助功能：添加国际化支持、添加无障碍访问（ARIA）支持、添加组件动画效果</p></li> <li><p>示例完善：为每个组件添加更多使用示例、添加最佳实践指南、添加常见问题解答</p></li> <li><p>docker自动部署：配置 CI/CD 流程；添加自动化发布流程</p></li></ul> <h2 id="备注"><a href="#备注" class="header-anchor">#</a> 备注</h2> <h3 id="打包工具对比"><a href="#打包工具对比" class="header-anchor">#</a> 打包工具对比</h3> <ul><li><strong>vite</strong></li></ul> <p>开发体验好，热更新快；配置简单；基于Rollup，但更现代化</p> <p><code>vite.config.js</code></p> <ul><li><strong>rollup</strong></li></ul> <ol><li>打包体积小，tree-shaking支持好</li> <li>配置灵活，插件生态丰富</li> <li>适合打包库文件</li> <li>支持ESM和CommonJS</li></ol> <p><code>rollup.config.js</code></p> <ul><li><strong>esbuild</strong></li></ul> <p>性能好；构建速度极快；配置简单；支持TypeScript</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// build.ts</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> build <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'esbuild'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> sassPlugin <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'esbuild-sass-plugin'</span><span class="token punctuation">;</span>
+<span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">entryPoints</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'src/index.ts'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">bundle</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">outdir</span><span class="token operator">:</span> <span class="token string">'dist'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">format</span><span class="token operator">:</span> <span class="token string">'esm'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">splitting</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">minify</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">sourcemap</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">target</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'es2019'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">plugins</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token function">sassPlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">external</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'react'</span><span class="token punctuation">,</span> <span class="token string">'react-dom'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> process<span class="token punctuation">.</span><span class="token function">exit</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><ul><li><strong>tsup</strong></li></ul> <p>优点：</p> <ol><li>配置极简</li> <li>开箱即用：内置TypeScript支持，自动生成.d.ts文件，内置压缩和Tree-shaking，支持CSS/SCSS处理</li> <li>构建速度快：基于esbuild，性能优秀；比Rollup和Webpack快很多；适合小到中型组件库；配置简单，维护成本低；满足基本打包需求</li></ol> <p>缺点：</p> <ol><li>配置灵活性较差：无法像Rollup那样精细控制打包过程；插件生态不如Rollup丰富</li> <li>特殊需求支持有限：复杂的代码分割场景支持不够；自定义转换能力有限</li> <li>CSS处理能力一般：CSS Modules支持不够完善；样式处理选项较少</li></ol> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token comment">// tsup.config.js</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> defineConfig <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'tsup'</span><span class="token punctuation">;</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  entry<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'src/index.ts'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  format<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'cjs'</span><span class="token punctuation">,</span> <span class="token string">'esm'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  dts<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  splitting<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  sourcemap<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  clean<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  treeshake<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><ul><li><strong>webpack</strong></li></ul> <p>优点：功能最完整，生态最丰富，配置最灵活</p> <p>缺点：配置较复杂，打包速度相对较慢</p> <table><thead><tr><th>特性</th> <th>tsup</th> <th>Rollup</th> <th>Vite</th> <th>esbuild</th> <th>webpack</th></tr></thead> <tbody><tr><td>配置难度</td> <td>极简</td> <td>中等</td> <td>简单</td> <td>简单</td> <td>复杂</td></tr> <tr><td>构建速度</td> <td>快</td> <td>中等</td> <td>快</td> <td>极快</td> <td>慢</td></tr> <tr><td>功能完整度</td> <td>基础够用</td> <td>完善</td> <td>完善</td> <td>基础</td> <td>最完善</td></tr> <tr><td>插件生态</td> <td>一般</td> <td>丰富</td> <td>丰富</td> <td>有限</td> <td>极其丰富</td></tr> <tr><td>TypeScript</td> <td>开箱支持</td> <td>需配置</td> <td>好</td> <td>原生支持</td> <td>需配置</td></tr> <tr><td>适用场景</td> <td>小型库</td> <td>类库</td> <td>组件库/应用</td> <td>工具库</td> <td>大型应用</td></tr> <tr><td>学习成本</td> <td>极低</td> <td>中等</td> <td>低</td> <td>低</td> <td>高</td></tr></tbody></table> <h3 id="ui组件库怎么实现在项目中的按需加载"><a href="#ui组件库怎么实现在项目中的按需加载" class="header-anchor">#</a> ui组件库怎么实现在项目中的按需加载？</h3> <p>目前 UI 组件库的配置已经支持按需加载了，主要是通过以下方式实现：</p> <ol><li>使用方式：</li></ol> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token comment">// 按需引入组件和样式</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> Button <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@verney/ui'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token string">'@verney/ui/dist/lib/styles/index.css'</span><span class="token punctuation">;</span>
+</code></pre></div><ol start="2"><li>配置支持：</li></ol> <ul><li>package.json 中已配置了 sideEffects，确保了样式文件不会被 tree-shaking</li> <li>构建配置中启用了 preserveModules，保留了模块结构</li> <li>exports 字段正确配置了组件和样式的导出路径
+这样在项目中使用时，打包工具会自动进行 tree-shaking，只打包实际使用到的组件代码。</li></ul> <h3 id="docs和storybook样式隔离-及其原理"><a href="#docs和storybook样式隔离-及其原理" class="header-anchor">#</a> Docs和Storybook样式隔离？及其原理？</h3> <p><strong>差异：</strong></p> <ul><li>docs 基于 Nextra 构建，<code>主要面向最终用户的使用文档</code>；而 Storybook <code>更侧重于组件开发过程中的调试和测试</code></li> <li>docs 支持 MDX 格式，可以更好地整合文档和示例；Storybook 使用独立的 stories 文件管理示例</li> <li>docs 的样式继承自文档站点；Storybook 提供了独立的预览环境</li></ul> <p><strong>样式隔离：</strong></p> <ul><li>docs 项目目前没有实现完全的样式隔离，组件样式可能会受到文档站点样式的影响</li> <li>Storybook 通过 iframe 实现了天然的样式隔离，每个组件故事都在独立的环境中运行</li></ul> <p>如果要在 docs 中实现样式隔离，可以考虑：</p> <ol><li>使用 CSS Modules 或 CSS-in-JS 方案</li> <li>为组件示例添加独立的样式作用域</li> <li><strong>使用 Shadow DOM 实现完全的样式隔离</strong></li></ol> <h2 id="问题记录"><a href="#问题记录" class="header-anchor">#</a> 问题记录</h2> <h3 id="依赖引用问题"><a href="#依赖引用问题" class="header-anchor">#</a> 依赖引用问题</h3> <ul><li>场景1：比如有一个mpnorepo库，在ui库下需要用到一些依赖，这些依赖又是在其他子库下会用到，所有这些依赖就安装在根目录的pkg里了，但打包的时候这些依赖是怎么打包到ui库里的呢？因为使用的时候只会安装该ui库，不会安装该monorepo项目根目录下的pkg文件</li></ul> <h3 id="样式问题"><a href="#样式问题" class="header-anchor">#</a> 样式问题</h3> <ul><li><p>组件预览，样式隔离</p></li> <li><p>样式不一致</p></li> <li><p>组件库的样式重置是在哪里设置的？</p></li> <li><p>样式文件单独打包？</p></li></ul> <h2 id="收藏"><a href="#收藏" class="header-anchor">#</a> 收藏</h2> <p>参考项目：</p> <ul><li><p>web-component组件库：<a href="https://juejin.cn/post/7353963878541230120" target="_blank" rel="noopener noreferrer">Pnpm + Turbo 搭建 Web Component Monorepo 组件库<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>、<a href="https://github.com/WebJeffery/stencil-component-ui" target="_blank" rel="noopener noreferrer">stencil-component-ui<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></li> <li><p><a href="https://juejin.cn/post/7343156956665839651" target="_blank" rel="noopener noreferrer">从零到一使用 turborepo + pnpm 搭建企业级 Monorepo 项目<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>、<a href="https://github.com/xun082/create-neat" target="_blank" rel="noopener noreferrer">create-neat<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></li> <li><p><a href="https://juejin.cn/post/7129267782515949575" target="_blank" rel="noopener noreferrer">Turborepo：发布当月就激增 3.8k Star，这款超神的新兴 Monorepo 方案，你不打算尝试下吗？<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>、<a href="https://github.com/ErKeLost/turborepo-template" target="_blank" rel="noopener noreferrer">turborepo-template<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></li> <li><p><a href="https://github.com/vercel/turborepo/tree/main/examples" target="_blank" rel="noopener noreferrer">turborepo:examples<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></li> <li><p><a href="https://github.com/emilkowalski/sonner" target="_blank" rel="noopener noreferrer">sonner<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></li> <li><p><a href="https://github.com/heroui-inc/heroui" target="_blank" rel="noopener noreferrer">heroui<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></li> <li><p><a href="https://github.com/shadcn-ui/ui" target="_blank" rel="noopener noreferrer">shadcn-ui<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></li></ul> <p>所有框架都适用，基于 TailwindCSS 的组件库：</p> <ul><li><a href="https://github.com/saadeghi/daisyui" target="_blank" rel="noopener noreferrer">daisyui<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="https://github.com/mdbootstrap/TW-Elements" target="_blank" rel="noopener noreferrer">TW-Elements<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="https://github.com/tailwindlabs/headlessui" target="_blank" rel="noopener noreferrer">headlessui<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul> <h2 id="参考"><a href="#参考" class="header-anchor">#</a> 参考</h2> <ul><li><a href="https://juejin.cn/post/7358306245349507098" target="_blank" rel="noopener noreferrer">用Pnpm+Turbo实现一个前后端共享api的Todos项目<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="https://juejin.cn/post/7440747801473122313" target="_blank" rel="noopener noreferrer">一个基于Turbo、Vue3.5+、TypeScript5+的 Monorepo 组件库模板项目，帮助快速搭建属于自己/企业级的组件库<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="https://blog.csdn.net/weixin_41697143/article/details/129012375" target="_blank" rel="noopener noreferrer">可能是最详细的React组件库搭建总结<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----> <div class="page-edit"><!----> <div class="tags"><a href="/tags/?tag=Turbo" title="标签">#Turbo</a><a href="/tags/?tag=React" title="标签">#React</a><a href="/tags/?tag=%E7%BB%84%E4%BB%B6%E5%BA%93" title="标签">#组件库</a><a href="/tags/?tag=MonoRepo" title="标签">#MonoRepo</a></div> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2/20/2025, 7:37:17 PM</span></div></div> <div class="page-nav-wapper"><!----> <!----></div></div> <div class="article-list"><div class="article-title"><a href="/archives" class="iconfont icon-bi">最近更新</a></div> <div class="article-wrapper"><dl><dd>01</dd> <dt><a href="/more/ai/claude-code.html"><div>
+            Claude-Code学习笔记
+            <!----></div></a> <span class="date">04-10</span></dt></dl><dl><dd>02</dd> <dt><a href="/more/ai/rag-lowcode.html"><div>
+            RAG实战：低码平台接入RAG知识库
+            <!----></div></a> <span class="date">03-04</span></dt></dl><dl><dd>03</dd> <dt><a href="/more/b-lowcode.html"><div>
+            B端低码平台的实践与思考
+            <!----></div></a> <span class="date">02-27</span></dt></dl> <dl><dd></dd> <dt><a href="/archives" class="more">更多文章&gt;</a></dt></dl></div></div></main></div> <div class="footer"><!----> 
+  Theme by
+  <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
+    | Copyright © 2021-2026
+    <span>Zyro | <a href="https://beian.miit.gov.cn/" target="_blank" style="font-weight:normal"><img src="/blog/images/icp.png" width="20" height="20" alt="公网备案"/>京ICP备2021006935号-2</a> </span></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div> <div title="主题模式" class="button blur theme-mode-but iconfont icon-zhuti"><ul class="select-box" style="display:none;"><li class="iconfont icon-zidong">
+          跟随系统
+        </li><li class="iconfont icon-rijianmoshi">
+          浅色模式
+        </li><li class="iconfont icon-yejianmoshi">
+          深色模式
+        </li><li class="iconfont icon-yuedu">
+          阅读模式
+        </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"><!----><!----><!----><div></div></div></div>
+    <script src="/assets/js/app.f2c56d1b.js" defer></script><script src="/assets/js/3.2bdc524f.js" defer></script><script src="/assets/js/153.582fe762.js" defer></script><script src="/assets/js/4.3068ff69.js" defer></script>
+  </body>
+</html>
